@@ -1,15 +1,7 @@
-import { useState } from "react";
-import axios from "axios";
 
-async function DogList() {
-  const [dogList, setDogList] = useState(await getData());
+function DogList({ dogList }) {
 
-  console.log(dogList);
 
-  async function getData() {
-    const result = await axios.get("http://localhost:5001/dogs");
-    return result.data;
-  }
 
   return (
     <div className="dogList">
@@ -24,5 +16,7 @@ async function DogList() {
   );
 
 }
+
+
 
 export default DogList;

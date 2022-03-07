@@ -1,6 +1,8 @@
-function Nav({ dogs }){
+function Nav({ dogList }){
 
-  //TODO
+  return(
+    <p>Nav Here</p>
+  );
 
 }
 
