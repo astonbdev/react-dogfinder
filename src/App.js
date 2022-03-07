@@ -15,9 +15,15 @@ function App() {
     setDogList(result.data);
   }
 
+  if (dogList.length === 0) {
+    getData();
+    return (
+      <div>Loading..</div>
+    )
+  }
+
   return (
     <div className="App">
-      {dogList === [] && getData()}
       <BrowserRouter>
         <Nav dogList={dogList} />
         <Routes dogList={dogList} />
