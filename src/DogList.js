@@ -1,18 +1,25 @@
+import { useState } from "react";
 import axios from "axios";
 
-function DogList(){
-  const results = axios.get("http://localhost:5000/dogs");
-  const dogs = results.data;
+async function DogList() {
+  const [dogList, setDogList] = useState(await getData());
 
-  return(
+  console.log(dogList);
+
+  async function getData() {
+    const result = await axios.get("http://localhost:5001/dogs");
+    return result.data;
+  }
+
+  return (
     <div className="dogList">
       {
-        dogs.map(dog => (
-          <div className="dogList-dog">
-            <p>{dog.name}</p>
-            <img src={dog.src} alt="dog" />
-          </div>
-          ))}
+        dogList.map(dog => (
+          // <div className="dogList-dog">
+          <p>{dog.name}</p>
+          // <img src={dog.src} alt="dog" />
+          // </div>
+        ))}
     </div>
   );
 
