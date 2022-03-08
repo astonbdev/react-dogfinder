@@ -1,12 +1,27 @@
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch, Redirect, useParams } from "react-router-dom";
 import DogList from "./DogList";
-import DogDetails from "./DogDetails";
+import DogRoute from "./DogRoute";
 
+/**
+ * Props:
+ * -dogList: type array like [{dog...}, {dog...},...]
+ *  where dog is like {name, src, facts, age}
+ *
+ * State:
+ * -none
+ *
+ * App -> Nav -> DogList, DogDetails
+ */
 function Routes({ dogList }) {
+  const params = useParams();
+  console.log(params);
+
   return (
     <Switch>
       <Route exact path="/dogs"><DogList dogList={dogList}/></Route>
-      <Route exact path="/dogs/:name"><DogDetails dogList={dogList}/></Route>
+      <Route exact path="/dogs/:name">
+        <DogRoute dogList={dogList}/>
+      </Route>
       <Redirect to="/dogs" />
     </Switch>
   )
