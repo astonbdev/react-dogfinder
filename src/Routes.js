@@ -14,13 +14,12 @@ import DogRoute from "./DogRoute";
  */
 function Routes({ dogList }) {
   const params = useParams();
-  console.log(params);
 
   return (
     <Switch>
-      <Route exact path="/dogs"><DogList dogList={dogList}/></Route>
+      <Route exact path="/dogs"><DogList dogList={dogList} /></Route>
       <Route exact path="/dogs/:name">
-        <DogRoute dogList={dogList}/>
+        <DogRoute dogList={dogList} />
       </Route>
       <Redirect to="/dogs" />
     </Switch>
